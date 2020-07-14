@@ -30,15 +30,14 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 //app.use('/api/', mainRoutes);
 
 // set up route
+
+app.get('/api/name', (req, res) => {
+  res.json({ name: 'hyhd1' });
+});
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../client/build/index.html'));
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
 });
 
-app.get('/2', (req, res) => {
-  res.status(200).json({
-    message: 'Welcome to P2' + path.join(__dirname, '../client/build/index.html'),
-  });
-});
 app.listen(port, () => {
   console.log(`Our server is running on port ${port}`);
 });

@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,15 +6,15 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   Course: [],
-    // };
+    this.state = {
+      data: [],
+    };
   }
 
   componentDidMount() {
-    fetch('/2')
+    fetch('/api/name')
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({ data: data }))
       .catch(e => {
         this.setState({
           Course: [{
@@ -26,11 +26,12 @@ class App extends Component {
   }
 
   render() {
-    
+
+    const { data } = this.state;
 
     return (
       <ul>
-        hello
+        hello {data.name}
       </ul>
     );
   }
