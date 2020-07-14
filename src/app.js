@@ -25,20 +25,18 @@ mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: t
     console.log(error);
   });
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 // set up route
 //app.use('/api/', mainRoutes);
 
 // set up route
-app.get('/*', (req, res) => {
-  res.status(200).json({
-    message: 'Welcome to Project with Nodejs Express and MongoDB2' + path.join(__dirname, 'client/build'),
-  });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'../client/build/index.html'));
 });
 
 app.get('/2', (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Project with Nodejs Express and MongoDB2' + path.join(__dirname, 'client/build'),
+    message: 'Welcome to P2' + path.join(__dirname, '../client/build/index.html'),
   });
 });
 app.listen(port, () => {
