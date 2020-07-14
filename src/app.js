@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import logger from 'morgan';
-
+const path = require('path');
 const conectionString = 'mongodb+srv://tnnshop:82ISxqEstnoh6tZc@cluster0.pam8z.gcp.mongodb.net/test?retryWrites=true&w=majority';
 var port = Number(process.env.PORT || 8888);
 // set up dependencies
@@ -25,13 +25,15 @@ mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: t
     console.log(error);
   });
 
-//app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 // set up route
 //app.use('/api/', mainRoutes);
 
 // set up route
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.status(200).json({
+    message: 'Welcome to Project with Nodejs Express and MongoDB2' + path.join(__dirname, 'client/build'),
+  });
 });
 
 app.get('/2', (req, res) => {
