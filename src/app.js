@@ -25,12 +25,12 @@ mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: t
     console.log(error);
   });
 
-  app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
  // set up route
-app.use('/api/', mainRoutes);
+//app.use('/api/', mainRoutes);
 
 // set up route
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
