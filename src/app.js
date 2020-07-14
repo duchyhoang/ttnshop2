@@ -18,25 +18,25 @@ import mainRoutes from './routes/main';
 
 // set up mongoose
 mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(()=> {
+  .then(() => {
     console.log('Database connected');
   })
-  .catch((error)=> {
+  .catch((error) => {
     console.log(error);
   });
 
-app.use(express.static(path.join(__dirname, 'client/build')));
- // set up route
+//app.use(express.static(path.join(__dirname, 'client/build')));
+// set up route
 //app.use('/api/', mainRoutes);
 
 // set up route
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 app.get('/2', (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Project with Nodejs Express and MongoDB2',
+    message: 'Welcome to Project with Nodejs Express and MongoDB2' + path.join(__dirname, 'client/build'),
   });
 });
 app.listen(port, () => {
