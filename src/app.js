@@ -29,7 +29,7 @@ mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api/', mainRoutes);
 
 // set up route
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.status(200).json({
     message: 'Welcome to Project with Nodejs Express and MongoDB',
   });
