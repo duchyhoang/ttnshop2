@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/courses')
+    fetch('/2')
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(e => {
