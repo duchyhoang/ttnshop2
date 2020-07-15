@@ -25,7 +25,7 @@ mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: t
     console.log(error);
   });
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../web/build')));
 // set up route
 app.use('/api/', mainRoutes);
 
