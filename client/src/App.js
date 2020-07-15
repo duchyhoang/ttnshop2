@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/name')
+    fetch('/api/courses')
       .then(response => response.json())
       .then(data => { console.log(data); this.setState({ data: data }) })
       .catch(e => {
@@ -31,7 +31,7 @@ class App extends Component {
 
     return (
       <ul>
-        hello {data.name}
+        hello 
       </ul>
     );
   }
