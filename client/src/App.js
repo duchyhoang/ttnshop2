@@ -14,7 +14,7 @@ class App extends Component {
   componentDidMount() {
     fetch('/api/name')
       .then(response => response.json())
-      .then(data => this.setState({ data: data }))
+      .then(data => { console.log(data); this.setState({ data: data }) })
       .catch(e => {
         this.setState({
           Course: [{
