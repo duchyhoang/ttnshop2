@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import logger from 'morgan';
 const path = require('path');
-//const conectionString = 'mongodb+srv://tnnshop:82ISxqEstnoh6tZc@cluster0.pam8z.gcp.mongodb.net/test?retryWrites=true&w=majority';
+const conectionString = 'mongodb+srv://tnnshop:82ISxqEstnoh6tZc@cluster0.pam8z.gcp.mongodb.net/test?retryWrites=true&w=majority';
 var port = Number(process.env.PORT || 8888);
 // set up dependencies
 const app = express();
@@ -17,7 +17,7 @@ app.use(logger('dev'));
 import mainRoutes from './routes/main';
 
 // set up mongoose
-mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(conectionString, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Database connected');
   })
@@ -32,7 +32,7 @@ app.use('/api/', mainRoutes);
 // set up route
 
 app.get('/api/name', (req, res) => {
-  res.json({ name: 'hyhd1', a: process.env.MONGODB|| "null" });
+  res.json({ name: 'hyhd1', a: process.env.MONGODB || "null" });
 });
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '../client/build/index.html'));
